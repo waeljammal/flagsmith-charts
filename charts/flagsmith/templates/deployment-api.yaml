@@ -62,7 +62,7 @@ spec:
         imagePullPolicy: {{ .Values.api.dbWaiter.image.imagePullPolicy }}
         command:
           - /wait-for-it.sh
-          - --host={{ template "flagsmith.postgres.hostname" . }}
+          - --host={{ template "flagsmith.databaseExternal.hostname" . }}
           - --port=5432
           - --timeout={{ .Values.api.dbWaiter.timeoutSeconds }}
       - name: migrate-db
